@@ -29,20 +29,25 @@ namespace MvcMovie
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<DBContext>(options =>   //使用 service.AddContext  註冊 DBContext 物件
-            {
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), mysqlOptions =>
-                {
-                    mysqlOptions.ServerVersion(new Version(10, 4, 8), ServerType.MySql);
-                });
-            }); 
+            
+            // 將 Session 存在 ASP.NET Core 記憶體中
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
+            services.AddEntityFrameworkMySql()
+            .AddDbContext<DBContext>(options =>options.
+            UseMySql(Configuration["ConnectionStrings:DefaultConnection"])); 
             services.AddMvc();
-            services.AddTransient<DbSqlRepository>();   
+            services.AddTransient<DbSqlRepository>(); 
+            services.AddTransient<AccountRepository>();  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env , DBContext dbContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env )
         {
+            // SessionMiddleware 加入 Pipeline
+            app.UseSession();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -64,10 +69,10 @@ namespace MvcMovie
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=CURD}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            dbContext.Database.EnsureCreated(); //建立資料庫
+            //dbContext.Database.EnsureCreated(); //建立資料庫
         }
     }
 }

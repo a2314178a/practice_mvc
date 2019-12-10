@@ -14349,6 +14349,26 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\work_project\\practice_mvc\\MvcMovie\\Views\\Account\\teacherPage.cshtml",
+      "TargetPath": "Views\\Account\\teacherPage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\work_project\\practice_mvc\\MvcMovie\\Views\\Account\\masterPage.cshtml",
+      "TargetPath": "Views\\Account\\masterPage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\work_project\\practice_mvc\\MvcMovie\\Views\\Account\\subPage\\addUpdateForm.cshtml",
+      "TargetPath": "Views\\Account\\subPage\\addUpdateForm.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\work_project\\practice_mvc\\MvcMovie\\Views\\Account\\studentPage.cshtml",
+      "TargetPath": "Views\\Account\\studentPage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\work_project\\practice_mvc\\MvcMovie\\Views\\CURD\\Index.cshtml",
       "TargetPath": "Views\\CURD\\Index.cshtml",
       "FileKind": "mvc"

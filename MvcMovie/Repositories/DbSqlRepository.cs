@@ -18,6 +18,7 @@ namespace MvcMovie.Repositories
 
         public DbSqlRepository(DBContext dbContext)
         {
+            //在构造函数中注入DbContext
             this._DbContext = dbContext;
         }
 
@@ -30,40 +31,6 @@ namespace MvcMovie.Repositories
                 Count = _DbContext.SaveChanges();
             }
             return Count;
-
-            #region
-            /*
-            using (var connection = _DbContext.Database.GetDbConnection())
-            {
-                connection.Open();
-                var command = connection.CreateCommand() as MySqlCommand;
-                command.CommandText = "INSERT INTO students(StudentID,Name,Sex) VALUES(@sid,@name,@sex)";
-                command.Parameters.Add(new MySqlParameter()
-                {
-                    ParameterName = "@sid",
-                    DbType = DbType.Int32,
-                    Value = user.newSid
-                });
-                command.Parameters.Add(new MySqlParameter()
-                {
-                    ParameterName = "@name",
-                    DbType = DbType.Int32,
-                    Value = user.newName
-                });
-                command.Parameters.Add(new MySqlParameter()
-                {
-                    ParameterName = "@sex",
-                    DbType = DbType.String,
-                    Value = user.newSex
-                });
-                var count = command.ExecuteNonQuery();
-               
-                //获取插入时产生的自增列Id并赋值给user.Id使用
-                //user.Id = (int)command.LastInsertedId;
-                return count;
-            }
-            */
-            #endregion
         }
 
         //删除
@@ -79,21 +46,6 @@ namespace MvcMovie.Repositories
                 }
             }
             return Count;
-            /*using (var connection = _DbContext.Database.GetDbConnection())
-            {
-                connection.Open();
-                var command = connection.CreateCommand() as MySqlCommand;
-                command.CommandText = "Delete From students Where Id = @id";
-                command.Parameters.Add(new MySqlParameter()
-                {
-                    ParameterName = "@id",
-                    DbType = DbType.Int32,
-                    Value = id
-                });
-                var count = command.ExecuteNonQuery();
-               
-                return count;
-            }*/
         }
 
         //更新
@@ -112,40 +64,6 @@ namespace MvcMovie.Repositories
                 }            
             }
             return Count;
-            /*
-            using (var connection = _DbContext.Database.GetDbConnection())
-            {
-                connection.Open();
-                var command = connection.CreateCommand() as MySqlCommand;
-                command.CommandText = "Update students set StudentID=@sid, Name=@name, Sex=@sex Where Id=@id ";
-                command.Parameters.Add(new MySqlParameter()
-                {
-                    ParameterName = "@sid",
-                    DbType = DbType.Int32,
-                    Value = user.StudentID
-                });
-                command.Parameters.Add(new MySqlParameter()
-                {
-                    ParameterName = "@name",
-                    DbType = DbType.Int32,
-                    Value = user.Name
-                });
-                command.Parameters.Add(new MySqlParameter()
-                {
-                    ParameterName = "@sex",
-                    DbType = DbType.String,
-                    Value = user.Sex
-                });
-                command.Parameters.Add(new MySqlParameter()
-                {
-                    ParameterName = "@id",
-                    DbType = DbType.Int32,
-                    Value = user.Id
-                });
-                var count = command.ExecuteNonQuery();
-                
-                return count;
-            }*/
         }
 
         public List<Student> Query()

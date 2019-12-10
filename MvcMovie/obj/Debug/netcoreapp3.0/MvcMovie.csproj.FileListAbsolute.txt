@@ -176,3 +176,9 @@ c:\xampp\htdocs\practice\practice_mvc\MvcMovie\obj\Debug\netcoreapp3.0\MvcMovie.
 C:\xampp\htdocs\practice\practice_mvc\MvcMovie\obj\Debug\netcoreapp3.0\MvcMovie.csproj.CopyComplete
 c:\xampp\htdocs\practice\practice_mvc\MvcMovie\obj\Debug\netcoreapp3.0\MvcMovie.dll
 c:\xampp\htdocs\practice\practice_mvc\MvcMovie\obj\Debug\netcoreapp3.0\MvcMovie.pdb
+c:\work_project\practice_mvc\MvcMovie\obj\Debug\netcoreapp3.0\Razor\Views\Account\masterPage.cshtml.g.cs
+c:\work_project\practice_mvc\MvcMovie\obj\Debug\netcoreapp3.0\Razor\Views\Account\studentPage.cshtml.g.cs
+c:\work_project\practice_mvc\MvcMovie\obj\Debug\netcoreapp3.0\Razor\Views\Account\teacherPage.cshtml.g.cs
+c:\work_project\practice_mvc\MvcMovie\bin\Debug\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+c:\work_project\practice_mvc\MvcMovie\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
+c:\work_project\practice_mvc\MvcMovie\obj\Debug\netcoreapp3.0\Razor\Views\Account\subPage\addUpdateForm.cshtml.g.cs

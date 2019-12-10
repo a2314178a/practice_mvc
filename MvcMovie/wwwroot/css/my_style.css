@@ -1,0 +1,30 @@
+﻿
+.student_table{
+  text-align:center;
+  margin-left:auto; 
+  margin-right:auto;
+  font-size:30px;
+}
+
+
+/*.edit_student,.del_student{
+  display:inline-block ;
+}
+.editIng .edit_student ,.editIng .del_student {
+  display:none ;
+}
+
+.update_student,.cancel_update{
+  display:none ;
+}
+.editIng .update_student ,.editIng .cancel_update {
+  display:inline-block ;
+}*/
+
+.editIng{
+  display:none ;
+}
+
+.template{
+  display:none;
+}

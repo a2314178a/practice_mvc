@@ -14384,6 +14384,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\work_project\\practice_mvc\\MvcMovie\\Views\\Account\\Index.cshtml",
+      "TargetPath": "Views\\Account\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\work_project\\practice_mvc\\MvcMovie\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"

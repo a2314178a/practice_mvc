@@ -69,7 +69,7 @@ namespace MvcMovie
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=Index}/{id?}");
             });
 
             //dbContext.Database.EnsureCreated(); //建立資料庫

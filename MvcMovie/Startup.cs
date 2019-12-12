@@ -38,7 +38,7 @@ namespace MvcMovie
             .AddDbContext<DBContext>(options =>options.
             UseMySql(Configuration["ConnectionStrings:DefaultConnection"])); 
             services.AddMvc();
-            services.AddTransient<DbSqlRepository>(); 
+            services.AddTransient<TeacherRepository>(); 
             services.AddTransient<AccountRepository>();  
         }
 

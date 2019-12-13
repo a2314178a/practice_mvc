@@ -14344,6 +14344,11 @@
   "RootNamespace": "MvcMovie",
   "Documents": [
     {
+      "FilePath": "c:\\work_project\\practice_mvc\\MvcMovie\\Views\\Account\\subPage\\studentDetail.cshtml",
+      "TargetPath": "Views\\Account\\subPage\\studentDetail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\work_project\\practice_mvc\\MvcMovie\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"

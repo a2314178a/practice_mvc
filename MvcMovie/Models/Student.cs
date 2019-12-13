@@ -14,8 +14,9 @@ namespace MvcMovie.Models
         [Required]
         public int AttachID { get; set; }
         public string Sex { get; set; }
-        public string Age { get; set; }
-        public string Birth { get; set; }
+        public int Age { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime Birth { get; set; }
         public string Subject { get; set; }
     }
 }

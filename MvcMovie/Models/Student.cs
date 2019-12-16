@@ -17,6 +17,8 @@ namespace MvcMovie.Models
         public int Age { get; set; }
         [DataType(DataType.Date)]
         public DateTime Birth { get; set; }
-        public string Subject { get; set; }
+        public string SubjectID { get; set; }
+        public DateTime CreateTime {get; set;}
+        public DateTime UpdateTime {get; set;}
     }
 }

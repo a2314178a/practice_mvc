@@ -32,6 +32,9 @@ namespace MvcMovie.Migrations
                     b.Property<DateTime>("Birth")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -41,8 +44,11 @@ namespace MvcMovie.Migrations
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
 
-                    b.Property<string>("Subject")
+                    b.Property<string>("SubjectID")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -55,12 +61,18 @@ namespace MvcMovie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("SubjectName")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("SubjectTime")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -80,13 +92,22 @@ namespace MvcMovie.Migrations
                     b.Property<int>("Authority")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("loginTime")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

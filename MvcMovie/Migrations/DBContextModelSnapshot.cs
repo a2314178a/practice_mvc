@@ -106,8 +106,8 @@ namespace MvcMovie.Migrations
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<long>("loginTime")
-                        .HasColumnType("bigint");
+                    b.Property<string>("loginTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 

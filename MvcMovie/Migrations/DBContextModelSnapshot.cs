@@ -14,8 +14,32 @@ namespace MvcMovie.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.0.1")
+                .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("MvcMovie.Models.Stu_sub", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<uint>("StudentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int(11) unsigned")
+                        .HasDefaultValue(0u);
+
+                    b.Property<uint>("SubjectID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int(11) unsigned")
+                        .HasDefaultValue(0u);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentID", "SubjectID")
+                        .IsUnique();
+
+                    b.ToTable("Stu_subs");
+                });
 
             modelBuilder.Entity("MvcMovie.Models.Student", b =>
                 {
@@ -64,17 +88,26 @@ namespace MvcMovie.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
+
                     b.Property<string>("SubjectName")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("SubjectTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("UpdateTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("WeekDay")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("SubjectName", "WeekDay", "StartTime", "EndTime")
+                        .IsUnique();
 
                     b.ToTable("Subjects");
                 });

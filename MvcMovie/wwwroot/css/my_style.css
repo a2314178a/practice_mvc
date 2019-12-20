@@ -1,5 +1,5 @@
 ﻿
-.student_table,.teacher_table,.detail_table{
+.student_table,.teacher_table,.detail_table,.subject_table{
   text-align:center;
   margin-left:auto; 
   margin-right:auto;
@@ -29,3 +29,41 @@
   display:none;
 }
 
+#subjectPage{
+  width:750px;
+  margin-left:auto; 
+  margin-right:auto;
+  text-align: center;
+}
+
+.addEdit_table{
+  text-align: left;
+}
+
+
+.addEditSubjectDiv{
+  margin-left:auto; 
+  margin-right:auto;
+  width:600px;
+}
+
+.showTimeDiv{
+  text-align: center;
+  background-color: white;
+}
+
+.subjectCUDbtn{
+  margin:5px;
+  float:right;
+}
+
+.delDayTimeBtn{
+  float:right;
+  zoom:60%;
+  border:2px Black double;
+  margin-top:3px;
+}
+
+.clickTimeDetail{
+  background-color: navy;
+}

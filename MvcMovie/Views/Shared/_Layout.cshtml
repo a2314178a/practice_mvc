@@ -22,9 +22,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
+                        @if (ViewBag.Authority == "1")
+                        {
+                           <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Subject" asp-route-page="Subject">Subject</a>
+                        }
+                        else
+                        {
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        }
                         </li>
-                        @if (ViewData["auth"]=="Y")
+                        @if (ViewBag.Auth == "Y")
                         {
                              <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="logOut">登出</a>

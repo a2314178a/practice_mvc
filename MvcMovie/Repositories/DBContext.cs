@@ -17,8 +17,16 @@ namespace MvcMovie.Repositories
         }*/
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Subject>()
+                .HasIndex(b => new{b.SubjectName, b.WeekDay, b.StartTime, b.EndTime}).IsUnique();
+
+
             modelBuilder.Entity<Stu_sub>()
-                .HasIndex(b => new{b.StudentID , b.SubjectID}).IsUnique();;
+                .Property(b => b.StudentID).HasColumnType("int(11) unsigned").HasDefaultValue(0);
+            modelBuilder.Entity<Stu_sub>()
+                .Property(b => b.SubjectID).HasColumnType("int(11) unsigned").HasDefaultValue(0);  //.IsRequired(false)
+            modelBuilder.Entity<Stu_sub>()
+                .HasIndex(b => new{b.StudentID , b.SubjectID}).IsUnique();
         }
     }
 }

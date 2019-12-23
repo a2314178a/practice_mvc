@@ -67,3 +67,8 @@
 .clickTimeDetail{
   background-color: navy;
 }
+
+#selSubjectDiv{
+  display: none;
+  text-align: center;
+}

@@ -40,6 +40,8 @@ namespace MvcMovie
             services.AddMvc();
             services.AddTransient<TeacherRepository>(); 
             services.AddTransient<AccountRepository>();  
+            services.AddTransient<StudentRepository>(); 
+            services.AddTransient<SubjectRepository>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

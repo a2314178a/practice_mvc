@@ -17,9 +17,10 @@ namespace MvcMovie.Repositories
         }*/
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Student>().HasIndex(b=>b.AccountID).IsUnique();
+
             modelBuilder.Entity<Subject>()
                 .HasIndex(b => new{b.SubjectName, b.WeekDay, b.StartTime, b.EndTime}).IsUnique();
-
 
             modelBuilder.Entity<Stu_sub>()
                 .Property(b => b.StudentID).HasColumnType("int(11) unsigned").HasDefaultValue(0);

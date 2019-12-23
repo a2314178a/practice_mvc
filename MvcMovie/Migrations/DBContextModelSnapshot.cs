@@ -47,6 +47,9 @@ namespace MvcMovie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int>("AccountID")
+                        .HasColumnType("int");
+
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
@@ -68,13 +71,13 @@ namespace MvcMovie.Migrations
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
 
-                    b.Property<string>("SubjectID")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<DateTime>("UpdateTime")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AccountID")
+                        .IsUnique();
 
                     b.ToTable("Students");
                 });

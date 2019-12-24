@@ -23,6 +23,12 @@ namespace MvcMovie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<uint>("StudentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int(11) unsigned")
@@ -32,6 +38,9 @@ namespace MvcMovie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int(11) unsigned")
                         .HasDefaultValue(0u);
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -65,8 +74,10 @@ namespace MvcMovie.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Sex")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<byte>("Sex")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1) unsigned")
+                        .HasDefaultValue((byte)0);
 
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
@@ -94,12 +105,18 @@ namespace MvcMovie.Migrations
                     b.Property<TimeSpan>("EndTime")
                         .HasColumnType("time");
 
+                    b.Property<int>("MaxPeople")
+                        .HasColumnType("int");
+
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time");
 
                     b.Property<string>("SubjectName")
                         .IsRequired()
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.Property<int>("TeacherID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateTime")
                         .HasColumnType("datetime(6)");

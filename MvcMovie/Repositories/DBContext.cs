@@ -11,13 +11,14 @@ namespace MvcMovie.Repositories
         public DbSet<User> Users { get; set; } 
         public DbSet<Subject> Subjects { get; set; } 
         public DbSet<Stu_sub> Stu_subs { get; set; } 
-        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Student>().ToTable<Student>("students");
-        }*/
+        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<Student>().ToTable<Student>("students");
             modelBuilder.Entity<Student>().HasIndex(b=>b.AccountID).IsUnique();
+            modelBuilder.Entity<Student>()
+                .Property(b=>b.Sex).HasColumnType("tinyint(1) unsigned").HasDefaultValue(0);
 
             modelBuilder.Entity<Subject>()
                 .HasIndex(b => new{b.SubjectName, b.WeekDay, b.StartTime, b.EndTime}).IsUnique();

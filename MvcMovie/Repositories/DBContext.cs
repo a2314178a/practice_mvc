@@ -11,6 +11,7 @@ namespace MvcMovie.Repositories
         public DbSet<User> Users { get; set; } 
         public DbSet<Subject> Subjects { get; set; } 
         public DbSet<Stu_sub> Stu_subs { get; set; } 
+        public DbSet<SubTime> SubTimes { get; set; }
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -20,8 +21,8 @@ namespace MvcMovie.Repositories
             modelBuilder.Entity<Student>()
                 .Property(b=>b.Sex).HasColumnType("tinyint(1) unsigned").HasDefaultValue(0);
 
-            modelBuilder.Entity<Subject>()
-                .HasIndex(b => new{b.SubjectName, b.WeekDay, b.StartTime, b.EndTime}).IsUnique();
+            modelBuilder.Entity<SubTime>()
+                .HasIndex(b => new{b.SubjectID, b.WeekDay, b.StartTime, b.EndTime}).IsUnique();
 
             modelBuilder.Entity<Stu_sub>()
                 .Property(b => b.StudentID).HasColumnType("int(11) unsigned").HasDefaultValue(0);

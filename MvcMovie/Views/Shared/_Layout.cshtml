@@ -22,15 +22,29 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                        @if (ViewBag.Authority == "1")
+                        @if (ViewBag.Authority == 1)
                         {
-                           <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Subject" asp-route-page="Subject">Subject</a>
+                           @* <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Subject" asp-route-page="Subject">Subject</a> *@
+                        }
+                        else if(ViewBag.Authority == 2)
+                        {
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="MySubject" asp-route-page="MySubject">MySubject</a>
+                        }
+                        else if(ViewBag.Authority == 3)
+                        {
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="MySubject" asp-route-page="MySubject">MySubject</a>
                         }
                         else
                         {
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            @* <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> *@
                         }
                         </li>
+                        @if(ViewBag.Authority == 2)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="AddSubject" asp-route-page="AddSubject">AddSubject</a>
+                            </li>
+                        }
                         @if (ViewBag.Auth == "Y")
                         {
                              <li class="nav-item">

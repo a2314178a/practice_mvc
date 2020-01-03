@@ -1,11 +1,14 @@
 ﻿
-.student_table,.teacher_table,.detail_table,.subject_table{
+.student_table,.teacher_table,.detail_table,.subject_table,.stuMySubject{
   text-align:center;
   margin-left:auto; 
   margin-right:auto;
   font-size:30px;
 }
 
+.table-hover-cells > tbody > tr > td[group='sub_td']:hover {
+  background-color: #333;
+}
 
 /*.edit_student,.del_student{
   display:inline-block ;
@@ -21,7 +24,7 @@
   display:inline-block ;
 }*/
 
-.editIng{
+.editIng,.sub_sex{
   display:none ;
 }
 
@@ -44,7 +47,7 @@
 .addEditSubjectDiv{
   margin-left:auto; 
   margin-right:auto;
-  width:600px;
+  width:650px;
 }
 
 .showTimeDiv{
@@ -71,4 +74,18 @@
 #selSubjectDiv{
   display: none;
   text-align: center;
+}
+
+
+.subTable, .subTable td{
+  border:none !important; 
+  font-size: 25px;
+  /*vertical-align: middle;*/
+}
+.subTable{
+  margin: auto;
+}
+
+td.status{
+  font-size: 15px !important;
 }

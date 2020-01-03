@@ -42,6 +42,9 @@ namespace MvcMovie.Migrations
                     b.Property<DateTime>("UpdateTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("VerifyAccID")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("StudentID", "SubjectID")
@@ -102,18 +105,12 @@ namespace MvcMovie.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<TimeSpan>("EndTime")
-                        .HasColumnType("time");
-
                     b.Property<int>("MaxPeople")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan>("StartTime")
-                        .HasColumnType("time");
-
                     b.Property<string>("SubjectName")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("TeacherID")
                         .HasColumnType("int");
@@ -121,13 +118,7 @@ namespace MvcMovie.Migrations
                     b.Property<DateTime>("UpdateTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("WeekDay")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("SubjectName", "WeekDay", "StartTime", "EndTime")
-                        .IsUnique();
 
                     b.ToTable("Subjects");
                 });
@@ -165,6 +156,38 @@ namespace MvcMovie.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("MvcMovie.Models.subTime", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("SubjectID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("WeekDay")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubjectID", "WeekDay", "StartTime", "EndTime")
+                        .IsUnique();
+
+                    b.ToTable("SubTimes");
                 });
 #pragma warning restore 612, 618
         }

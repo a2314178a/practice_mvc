@@ -1,5 +1,6 @@
 ﻿
-.student_table,.teacher_table,.detail_table,.subject_table,.stuMySubject{
+.student_table,.teacher_table,.detail_table,.subject_table,
+.stuMySubject,.homework_table,.homeworkFile_table{
   text-align:center;
   margin-left:auto; 
   margin-right:auto;
@@ -71,7 +72,7 @@
   background-color: navy;
 }
 
-#selSubjectDiv{
+#selSubjectDiv,#subjectDetailDiv,#thisSubHomework,#uploadDiv,#showHomeworkFileDiv{
   display: none;
   text-align: center;
 }
@@ -89,3 +90,19 @@
 td.status{
   font-size: 15px !important;
 }
+
+.tmpHomeworkDiv{
+  margin: 25px;
+  font-size: 20px;
+}
+
+td textarea{
+  width:200px;
+  height:60px;
+  font-size:20px;
+}
+
+
+
+
+

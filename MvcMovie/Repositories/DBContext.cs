@@ -12,6 +12,8 @@ namespace MvcMovie.Repositories
         public DbSet<Subject> Subjects { get; set; } 
         public DbSet<Stu_sub> Stu_subs { get; set; } 
         public DbSet<SubTime> SubTimes { get; set; }
+        public DbSet<SubHomework> SubHomeworks { get; set; }
+        public DbSet<HomeworkURL> HomeworkURLs { get; set; }
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -30,6 +32,8 @@ namespace MvcMovie.Repositories
                 .Property(b => b.SubjectID).HasColumnType("int(11) unsigned").HasDefaultValue(0);  //.IsRequired(false)
             modelBuilder.Entity<Stu_sub>()
                 .HasIndex(b => new{b.StudentID , b.SubjectID}).IsUnique();
+
+            modelBuilder.Entity<HomeworkURL>().HasIndex(b=>b.NewName).IsUnique();
         }
     }
 }

@@ -7,19 +7,20 @@ namespace MvcMovie.Repositories
     public class DBContext : DbContext
     {
         public DBContext(DbContextOptions options) : base(options){ }
-        public DbSet<Student> Students { get; set; }       //query use
-        public DbSet<User> Users { get; set; } 
-        public DbSet<Subject> Subjects { get; set; } 
-        public DbSet<Stu_sub> Stu_subs { get; set; } 
-        public DbSet<SubTime> SubTimes { get; set; }
-        public DbSet<SubHomework> SubHomeworks { get; set; }
-        public DbSet<HomeworkURL> HomeworkURLs { get; set; }
+        public DbSet<Student> students { get; set; }       //query use
+        public DbSet<User> users { get; set; } 
+        public DbSet<Subject> subjects { get; set; } 
+        public DbSet<Stu_sub> stu_subs { get; set; } 
+        public DbSet<SubTime> subtimes { get; set; }
+        public DbSet<SubHomework> subhomeworks { get; set; }
+        public DbSet<HomeworkURL> homeworkurls { get; set; }
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Student>().ToTable<Student>("students");
             modelBuilder.Entity<Student>().HasIndex(b=>b.AccountID).IsUnique();
+            modelBuilder.Entity<User>().HasIndex(b=>b.Account).IsUnique();
             modelBuilder.Entity<Student>()
                 .Property(b=>b.Sex).HasColumnType("tinyint(1) unsigned").HasDefaultValue(0);
 

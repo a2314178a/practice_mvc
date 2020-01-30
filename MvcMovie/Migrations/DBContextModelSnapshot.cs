@@ -230,7 +230,7 @@ namespace MvcMovie.Migrations
 
                     b.Property<string>("Account")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("Authority")
                         .HasColumnType("int");
@@ -253,6 +253,9 @@ namespace MvcMovie.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Account")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });

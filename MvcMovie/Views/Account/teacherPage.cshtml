@@ -1,0 +1,391 @@
+﻿@{
+    /*ViewData["Title"] = "Home Page";*/
+}
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="~/css/my_style.css">			    
+        
+	</head>
+
+	<body>	
+    
+        <div class="container mainDiv">
+            <div class="row mx-0 align-items-center justify-content-center w-100">
+                <div class="col-12">
+                    @if(ViewBag.showPage == "MySubject")
+                    {
+                        <div id="mySubjectPage">
+                            
+                            <ul class="nav nav-tabs justify-content-end" group="subject">                         
+                                <select id="mySubjectSel" >                                   
+                                </select>
+                                <span style="width:30px;"></span>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" name="isMember" onclick="showMember(1);">已核准</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" name="notMember" onclick="showMember(0);">待審核</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="#" name="subDetail" onclick="subjectDetail();">課程相關</a>
+                                </li>
+                            </ul>
+                            <hr/>
+                            <div id="studentListDiv">
+                                <div class="listDiv">
+                                    <table class="table table-hover table-bordered student_table">
+                                        <thead class="thead-dark" >
+                                            <tr>
+                                                <th scope="col">學號</th>
+                                                <th scope="col">姓名</th>
+                                                <th scope="col">性別</th>
+                                                <th scope="col">管理動作</th>
+                                            </tr>
+                                        </thead> 
+                                        <tbody class="studentList">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div group="subject">
+                                    <div style="float:right;">
+                                        已核准人數:<span id="currentPeople"></span>
+                                        人數上限:<span id="maxPeople"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="subjectDetailDiv">
+                                <div id="newHomeworkDiv">
+                                    <table class="table table-hover table-bordered homework_table">
+                                        <thead class="thead-dark" >
+                                        <tr>
+                                            <th scope="col">作業名稱</th>
+                                            <th scope="col">作業內容</th>
+                                            <th scope="col">截止時間</th>
+                                            <th scope="col">管理動作</th>
+                                        </tr>
+                                        </thead> 
+                                        <tbody class="homeworkList">
+                                        </tbody>
+                                    </table>
+                                </div>    
+                                <a href="javascript:void(0);" class="btn btn-primary btnActive add_homework" style="float:right">新增作業</a>
+                            </div>
+                            <div id="showHomeworkFileDiv">
+                                <div>
+                                    <table class="table table-hover table-bordered homeworkFile_table">
+                                        <thead class="thead-dark" >
+                                        <tr>
+                                            <th scope="col">學號</th>
+                                            <th scope="col">姓名</th>
+                                            <th scope="col">作業</th>
+                                            <th scope="col">管理動作</th>
+                                        </tr>
+                                        </thead> 
+                                        <tbody class="homeworkFileList">
+                                        </tbody>
+                                    </table>
+                                </div>    
+                            </div>
+                        </div>
+                    }
+                    else if(ViewBag.showPage == "AddSubject")
+                    {
+                        <div id="addSubjectPage">
+                            <table class="table table-hover table-bordered subject_table">
+                                <thead class="thead-dark" >
+                                    <tr>
+                                        <th scope="col">科目</th>
+                                        <th scope="col">時間</th>
+                                        <th scope="col">管理動作</th>
+                                    </tr>
+                                </thead> 
+                                <tbody class="subjectList">
+                                </tbody>
+                            </table>
+                            <a href="javascript:void(0);" class="btn btn-primary btnActive add_subject" style="float:right">新增科目</a>
+                        </div>
+                    }
+                    else
+                    {   <div id="studentPage">
+                            <div class="filterDiv">
+                                <div style="text-align:center;">
+                                    <p>
+                                        <form id="filter">
+                                            <span style="font-size:20px;">查詢&nbsp;&nbsp;</span> 
+                                            <select name="filterOption">
+                                                <option value="0">請選擇</option>
+                                                <option value="sid">學號</option>
+                                                <option value="name">姓名</option>
+                                                <option value="sex">性別</option>
+                                            </select>
+                                            <input type="text" name="filterWord">
+                                            <select class="sub_sex" name="filterSex">
+                                                <option value="">請選擇</option>
+                                                <option value="0">不公開</option>
+                                                <option value="1">男</option>
+                                                <option value="2" >女</option>
+                                            </select>
+                                            <button name="search">搜尋</button>
+                                        </form>
+                                    </p>
+                                </div>
+                            </div> 
+
+                            <br/>
+
+                            <div class="listDiv">
+                                <table class="table table-hover table-bordered student_table">
+                                    <thead class="thead-dark" >
+                                        <tr>
+                                            <th scope="col">學號</th>
+                                            <th scope="col">姓名</th>
+                                            <th scope="col">性別</th>
+                                            <th scope="col">管理動作</th>
+                                        </tr>
+                                    </thead> 
+                                    <tbody class="studentList">
+                                    </tbody>
+                                </table>
+                                <div name="addButtonDiv" class="btnActive">
+                                    <a href="javascript:void(0);" class="btn btn-primary" style="float:right">新增學生</a>
+                                </div>      
+                            </div>
+                        </div>
+                    }
+                </div><!-- <div class="col-12"> -->
+            </div><!-- <div class="row mx-0 ... w-100"> -->
+        </div><!-- <div class="container mainDiv"> -->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="template">
+
+            <table>
+                <tr name="dataRow">
+                    <td scope="col" name="sid"></td>
+                    <td scope="col" name="name"><a href="#"></a></td>
+                    <td scope="col" name="sex"></td>
+                    <td scope="col" width="20%">
+                        @if(ViewBag.showPage == "MySubject")
+                        {
+                            <a href="javascript:void(0);" class="btn btn-primary agree_student" >接受</a>
+                            <a href="javascript:void(0);" class="btn btn-danger disagree_student" >拒絕</a>
+                        }
+                        else
+                        {
+                            <a href="javascript:void(0);" class="btn btn-primary edit_student btnActive" >編輯</a>
+                            <a href="javascript:void(0);" class="btn btn-danger del_student btnActive" >刪除</a>
+                        }
+                    </td>
+                </tr>
+                <tr name="inputRow">
+                    <td>
+                        <input type='text' name="newSidTxb" style='zoom:75%'>
+                    </td>
+                    <td>
+                        <input type='text' name="newNameTxb" style='zoom:75%'>
+                    </td>
+                    <td>
+                        <select name="newSexTxb">
+                            <option value="0">不公開</option>
+                            <option value="1">男</option>
+                            <option value="2">女</option>
+                        </select>
+                        @* <input type='text' name="newSexTxb" style='zoom:75%'> *@
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="btn btn-success" group="add" name="addBtn">新增</a>
+                        <a href="javascript:void(0);" class="btn btn-secondary" group="add" name="addCancel">取消</a>
+                        <a href="javascript:void(0);" class="btn btn-success" group="update" name="updateBtn">更新</a>
+                        <a href="javascript:void(0);" class="btn btn-secondary" group="update" name="updateCancel">取消</a>
+                    </td>
+                </tr>
+                <tr name="subTimeDetail" class="subTimeDetail">
+                    <td name="subName"></td>
+                    <td name="subTime"></td>
+                    <td class="status" name="subStatus" ></td>
+                </tr>
+                 <tr name="subjectRow">
+                    <td scope="col" name="subjectName"></td>
+                    <td scope="col" name="subjectTime"></td>
+                    <td>
+                        <a href="javascript:void(0);" class="btn btn-primary edit_subject btnActive" >編輯</a>
+                        <a href="javascript:void(0);" class="btn btn-danger del_subject btnActive" >刪除</a>
+                    </td>
+                </tr>
+
+                <tr name="homeworkRow">
+                    <td scope="col" name="homeworkName"></td>
+                    <td scope="col" name="homeworkDetail"></td>
+                    <td scope="col" name="deadTime"></td>
+                    <td>
+                        <a href="javascript:void(0);" class="btn btn-primary edit_homework btnActive" >編輯</a>
+                        <a href="javascript:void(0);" class="btn btn-danger del_homework btnActive" >刪除</a>
+                    </td>
+                </tr>
+                <tr name="hwInputRow">
+                    <td>
+                        <input type='text' name="homeworkName" style='zoom:75%'>
+                    </td>
+                    <td>
+                        <textarea name="homeworkDetail" ></textarea>
+                    </td>
+                    <td>
+                        <input type='datetime-local' name="deadTime" style='zoom:75%'>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="btn btn-success" group="add" name="addBtn">新增</a>
+                        <a href="javascript:void(0);" class="btn btn-secondary" group="add" name="addCancel">取消</a>
+                        <a href="javascript:void(0);" class="btn btn-success" group="update" name="updateBtn">更新</a>
+                        <a href="javascript:void(0);" class="btn btn-secondary" group="update" name="updateCancel">取消</a>
+                    </td>
+                </tr>
+
+                <tr name="homeworkFileRow">
+                    <td scope="col" name="studentID"></td>
+                    <td scope="col" name="studentName"></td>
+                    <td scope="col" name="file"></td>
+                    <td scope="col" >
+                        <a href="javascript:void(0);" class="btn btn-danger del_file btnActive" >刪除</a>
+                    </td>
+                </tr>
+
+            </table>
+
+            <div name="addEditDiv" class="addEditSubjectDiv">
+                <form>
+                    <table class="table table-secondary addEdit_table">
+                        <tbody>
+                            <tr>
+                                <td>科目:</td>
+                                <td>
+                                    <input type="text" name="subjectName">&nbsp;
+                                    人數上限: <input type="text" oninput="value=value.replace(/[^\d]/g,'')" size="6" maxlength="3" name="maxPeople">
+                                    <input type="button" class="subjectCUDbtn" name="cancelSubjectBtn" value="取消" onclick="closeAddUpdate()">
+                                    <input type="button" class="subjectCUDbtn" name="updateSubjectBtn" value="更新科目">
+                                    <input type="button" class="subjectCUDbtn" name="addSubjectBtn" value="新增科目">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>時間:</td>
+                                <td>
+                                    <div name="selectDiv">
+                                        <select name="weekDay">
+                                            <option value="">請選擇</option>
+                                            <option value="1">星期一</option>
+                                            <option value="2">星期二</option>
+                                            <option value="3">星期三</option>
+                                            <option value="4">星期四</option>
+                                            <option value="5">星期五</option>
+                                            <option value="6">星期六</option>
+                                            <option value="7">星期日</option>
+                                        </select>&nbsp;
+                                        上課時間&nbsp;&nbsp;<input type="time" name="subStartTime" >&nbsp;到&nbsp;
+                                        <input type="time" name="subEndTime" >&nbsp;&nbsp;
+                                        <input type="button" name="addSelTime" value="添加時間" style="float:right;">
+                                    </div>
+                                    <br/>
+                                    <div name="showDiv" class="showTimeDiv">     
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+            
+            <div class="detailDiv">
+                <div class="container">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-8">
+                            <form type="post">
+                                <table class="table table-hover table-bordered detail_table">
+                                    <tbody>
+                                        <tr name="StudentID">
+                                            <td >學號:</td>
+                                            <td class="editMode"><input type="text" name="StudentID" value=""></td>
+                                            <td class="textMode" name="StudentID"></td>
+                                        </tr>
+                                        <tr name="Name">
+                                            <td >姓名:</td>
+                                            <td class="editMode"><input type="text" name="Name" value=""></td>
+                                            <td class="textMode" name="Name"></td>
+                                        </tr>
+                                        <tr name="Sex">
+                                            <td >性別:</td>
+                                            <td class="editMode">
+                                                <select name="Sex">
+                                                    <option value="0">不公開</option>
+                                                    <option value="1">男</option>
+                                                    <option value="2">女</option>
+                                                </select>
+                                            </td>
+                                            <td class="textMode" name="Sex"></td>
+                                        </tr>
+                                        <tr name="Birth">
+                                            <td >生日:</td>
+                                            <td class="editMode"><input type="date" name="Birth" value=""></td>
+                                            <td class="textMode" name="Birth"></td>
+                                        </tr>
+                                        <tr name="Age">
+                                            <td >年齡:</td>
+                                            <td class="editMode"><input type="text" name="Age" value=""></td>
+                                            <td class="textMode" name="Age"></td>
+                                        </tr>
+                                        <tr name="Subject">
+                                            <td >選修科目:</td>
+                                            @* <td class="editMode" name="editSubject"></td> *@
+                                            <td class="" name="textSubject"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div style="text-align:center;">
+                                    @if(ViewBag.showPage != "MySubject")
+                                    {
+                                        <button type="button" class="textMode" name="editBtn" >編輯</button>@:&nbsp;&nbsp;&nbsp;
+                                    }  
+                                    <button type="button" class="textMode" name="BackBtn" onclick="goBackDetail();">Back</button>
+                                    @if(ViewBag.showPage != "MySubject")
+                                    {
+                                        <button type="button" class="editMode" name="updateBtn" >更新</button>@:&nbsp;&nbsp;&nbsp;
+                                        <button type="button" class="editMode" name="cancelBtn" onclick="cancelEditDetail();">取消</button>
+                                    }
+                                </div>
+                                <table class="subTable" ></table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+
+        </div><!-- <div class="template"> -->
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <script src="~/js/baseJS.js" type="text/javascript"></script>
+        <script src="~/js/teacherPage.js" type="text/javascript"></script>
+	</body>
+</html>
